@@ -14,9 +14,10 @@ data = [
     (100, "Monica", "Bellucci", "Italy"), 
     (110, "Kate", "Upton", "USA"),
     (120, "Kate", "Winslet", "USA"),
-    (130, "Pierce ", "Brosnan", "USA")]
+    (130, "Pierce ", "Brosnan", "USA"),
+    (140, "Tom", "Cruise", "USA")]
 
 columns = ["ID", "F_Name", "L_Name", "Origin"]
 
-df = spark.createDataFrame(data, columns)
-df.show()
+actors_df = spark.createDataFrame(data, columns)
+actors_df.show()
