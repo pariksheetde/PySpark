@@ -1,0 +1,15 @@
+DEPT_ID,DEPT_NAME,LOC_ID
+100,PySpark Developer,10
+110,Java Developer,10
+190,SQL Developer,20
+200,Microstrategy Developer,25
+210,Teradata Developer,30
+220,Teradata DBA,35
+230,Oracle PL/SQL Developer,40
+120,Scala Spark Developer,10
+130,Informtica PowerCenter Developer,10
+150,AWS PySpark Developer,15
+160,Azure PySpark Developer,15
+170,Power BI Developer,15
+180,Tableau Developer,15
+140,AWS Data Specialist,15
