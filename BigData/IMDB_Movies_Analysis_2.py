@@ -46,7 +46,7 @@ movies_df = spark.read \
     .option("sep", ",") \
     .option("nullValue", "") \
     .option("compression", "snappy") \
-    .option("path","D:/DataSet/DataSet/SparkDataSet/IMDb_Movies.csv") \
+    .option("path","D:/DataSet/DataSet/SparkDataSet/IMDB_Movies.csv") \
     .load()
 
 movies_sel = movies_df.select(col("title"), expr("year"), col("date_published"),
