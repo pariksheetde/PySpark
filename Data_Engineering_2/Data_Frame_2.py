@@ -21,7 +21,8 @@ schema = StructType([
 data = [["Samsung", "Galaxy S8", "Android" ,65000, "15-10-2021"],
         ["Apple", "IPhone 10 MAX", "iOS", 75000, "12-11-2020"],
         ["Apple", "IPhone X", "iOS", 125000, "12-10-2017"],
-        ["Redmi", "Redmi 9", "Android", 10900,"12-12-2015"]
+        ["Redmi", "Redmi 9", "Android", 10900,"12-12-2015"],
+        ["Apple", "MacBook Pro 16", "IOS", 310000, "12-12-2021"]
         ]
 
 mobile_df = spark.createDataFrame(data, schema)
