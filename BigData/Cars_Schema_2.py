@@ -23,6 +23,6 @@ data = [
 #     StructField("Brand", StringType(), True)]
 #   )
 
-df = spark.createDataFrame(data, schema = "ID INT, Model STRING, Model STRING")
+df = spark.createDataFrame(data, schema = "ID INT, Name STRING, Model STRING")
 df.printSchema()
 df.show()
