@@ -33,7 +33,7 @@ emp_df = spark.read \
     .option("sep", ",") \
     .option("compression", "snappy") \
     .option("dateFormat", "dd/MM/yyy") \
-    .load("D:/DataSet/DataSet/SparkDataSet/Employees.csv")
+    .load("D:/DataSet/DataSet/SparkDataSet/employees.csv")
 
 cln_emp_df = emp_df.selectExpr("EMPLOYEE_ID as EmpID", "FIRST_NAME as F_Name", "LAST_NAME as L_Name", "EMAIL as Email_ID",
       "PHONE_NUMBER as Contact", "HIRE_DATE as Joining_Date", "JOB_ID as Job_ID", "SALARY as Salary", "COMMISSION_PCT as Commission",
