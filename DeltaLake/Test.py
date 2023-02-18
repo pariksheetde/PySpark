@@ -6,9 +6,9 @@ from pyspark.sql.functions import *
 from pyspark.sql.types import StructType
 
 if __name__ == "__main__":
-    print("Invoice Data Analysis 1")
+    print("Test.py")
 
-spark = SparkSession.builder.appName("Invoice Data Analysis 1").master("local[3]").getOrCreate()
+spark = SparkSession.builder.appName("Test.py").master("local[3]").getOrCreate()
 
 invoice_df = (spark.read.format("csv")
     .option("header", "true")
@@ -23,6 +23,6 @@ invoice_df = (spark.read.format("csv")
 invoice_df.printSchema()
 invoice_df.show(truncate = False)
 
-invoice_df.write.format("delta").mode('overwrite').save("D:/DataSet/OutputDataset/Delta/flight_data")
+# invoice_df.write.format("delta").mode('overwrite').save("D:/DataSet/OutputDataset/Delta/flight_data")
 
 spark.stop()
