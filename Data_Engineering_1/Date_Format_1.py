@@ -9,15 +9,16 @@ from pyspark.sql.types import StructType
 if __name__ == "__main__":
     print("Date Format 1")
 
-spark = SparkSession.builder.appName("Date_Format_1").master("local[3]").getOrCreate()
+# spark = SparkSession.builder.appName("Date_Format_1").master("local[3]").getOrCreate()
+spark = SparkSession.builder.appName("Date_Format_1").master("local[*]").getOrCreate()
 
-def_schema = StructType([
-    StructField("ID", IntegerType(), True),
-    StructField("EventDate", StringType(), True)]
-  )
-columns = ["ID","EventDate"]
+# def_schema = StructType([
+#     StructField("ID", IntegerType(), True),
+#     StructField("EventDate", StringType(), True)]
+#   )
+# columns = ["ID","EventDate"]
 
-data = [(100, "01-01-2020"), (110, "02-02-2020"),(120, "03-03-2020")]
+# data = [(100, "01-01-2020"), (110, "02-02-2020"),(120, "03-03-2020")]
 
-df = spark.createDataFrame(data=data, schema = columns)
-df.show()
+# df = spark.createDataFrame(data=data, schema = columns)
+# df.show()
