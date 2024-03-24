@@ -53,7 +53,3 @@ purchase_df.write.mode("overwrite").format("delta").save("D:/Deltalake/cars_anal
 # validate_df.show()
 
 spark.stop()
-
-# COMMENT
-
-# TEST
