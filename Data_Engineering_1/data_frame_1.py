@@ -19,7 +19,8 @@ schema = StructType([
 ])
 
 data = [["Monica", "Bellucci", 2500000, "Italy"], ["Kate", "Upton", 2250000, "USA"],
-        ["Gigi", "Hadid", None, "USA"], ["Barbara", "Palvin", 5414782, "USA"]]
+        ["Gigi", "Hadid", None, "USA"], ["Barbara", "Palvin", 5414782, "USA"],
+        ['Blake', 'Lively', 2575000, 'USA'],]
 
 cust_df = spark.createDataFrame(data, schema)
 cust_df.show(10, False)
