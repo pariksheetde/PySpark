@@ -17,7 +17,8 @@ data = [
     (130, "Pierce ", "Brosnan", "USA", "Acting"),
     (140, "Tom", "Cruise", "USA", "Acting"),
     (150, "Chris", "Patt", "USA", "Acting"),
-    (160, "Daniel", "Craig", "UK", "Acting")]
+    (160, "Daniel", "Craig", "UK", "Acting"),
+    (170, "Blake", "Lively", "USA", "Modeling")]
 
 columns = ["ID", "F_Name", "L_Name", "Origin", "Occupation"]
 
