@@ -38,11 +38,10 @@ agg_price = books_df.select("Genre", "Price") \
     .agg(
         max("Price").alias("Max_Price"),
         mean("Price").alias("Min_Price"),
-        avg("Price").alias("Avg_Price"),
+        avg("Price").alias("Mean_Price"),
         count("*").alias("Count")
 ) \
     .sort(desc("Max_Price"))
 
 agg_price.show(10, False)
 spark.stop()
-
