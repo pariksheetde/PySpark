@@ -1,7 +1,5 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.types import StructType, StructField, StringType, IntegerType
-from pyspark.sql.functions import col
-
 
 def create_customer_dataframe(spark):
     """
@@ -41,8 +39,7 @@ if __name__ == "__main__":
     # Create and display DataFrame
     customer_df = create_customer_dataframe(spark)
     print("Customer DataFrame:")
-    # customer_df.show(truncate=False)
-    customer_df.select("F_Name", "L_Name", "Salary", "Nationality").orderBy(col("Salary").desc()).show(truncate=False)
+    customer_df.show(truncate=False)
 
     # Stop Spark session
     spark.stop()
