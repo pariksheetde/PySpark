@@ -24,7 +24,7 @@ def create_customer_dataframe(spark):
         (150, "Chris", "Patt", "USA", "Acting"),
         (160, "Daniel", "Craig", "UK", "Acting"),
         (170, "Blake", "Lively", "USA", "Modeling"),
-        (170, "Jennifer", "Lopez", "USA", "Acting"),
+        (180, "Jennifer", "Lopez", "USA", "Acting"),
         ]
 
     columns = ["ID", "F_Name", "L_Name", "Origin", "Occupation"]
