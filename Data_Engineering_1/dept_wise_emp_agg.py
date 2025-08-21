@@ -72,10 +72,10 @@ def create_emp_dept_agg_df(emp_df, dept_df):
         DataFrame: Aggregated DataFrame with employee count and average salary per department.
     """
     emp_dept_agg_df = emp_df.join(dept_df, emp_df.Dept_ID == dept_df.Dept_ID, "inner") \
-        .groupBy("Dept_Name") \
+        .groupBy(dept_df["Dept_ID"]) \
         .agg(
             count("Emp_ID").alias("Employee_Count"),
-            avg("Salary").alias("Avg_Salary")
+            round(avg("Salary"),2).alias("Avg_Salary")
         ) \
         .orderBy(desc("Employee_Count"))
 
