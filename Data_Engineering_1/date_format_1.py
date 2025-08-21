@@ -1,9 +1,6 @@
-from pyspark.sql import *
-import pyspark
 from pyspark.sql import SparkSession
-from pyspark.sql.types import *
-from pyspark.sql.functions import *
-from pyspark.sql.types import StructType
+from pyspark.sql.types import StructType, StructField, StringType, IntegerType, DateType
+from pyspark.sql.functions import col
 
 
 def create_dataframe(spark):
@@ -37,7 +34,7 @@ if __name__ == "__main__":
   # Create and display DataFrame
   df = create_dataframe(spark)
   print("DataFrame:")
-  # customer_df.show(truncate=False)
+  
   df.select("*").show(truncate=False)
   df.printSchema()
   # Stop Spark session

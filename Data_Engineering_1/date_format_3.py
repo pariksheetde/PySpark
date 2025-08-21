@@ -6,10 +6,16 @@ from pyspark.sql.functions import *
 from pyspark.sql.types import StructType
 
 
-if __name__ == "__main__":
-    print("Package : Data_Engineering_1, Script : Date Format 3")
+def create_dataframe(spark):
+    """
+    Creates a PySpark DataFrame containing dataframe details.
+    Define schema for manually created data frame
+    """
+    spark = SparkSession.builder \
+        .appName("Date Format Example") \
+        .getOrCreate()
 
-spark = SparkSession.builder.appName("Date_Format_3").master("local[3]").getOrCreate()
+    return spark
 
 def_schema = StructType([
     StructField("ID", IntegerType(), True),
