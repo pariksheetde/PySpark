@@ -111,4 +111,5 @@ if __name__ == "__main__":
   emp_dept_agg_df.printSchema()
   emp_dept_agg_df.select("*").show(emp_dept_agg_df.count(), truncate=False)
 
+  # Stop Spark session
   spark.stop()
