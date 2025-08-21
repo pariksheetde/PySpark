@@ -6,30 +6,39 @@ from pyspark.sql.functions import *
 from pyspark.sql.types import StructType
 
 
-if __name__ == "__main__":
-    print("Package : Data_Engineering_1, Script : Date Format 2")
-    spark = SparkSession.builder \
-        .appName("Date_Format_1") \
-        .master("local[3]") \
-        .getOrCreate()
-
-    # logger = Log4J()
-    # logger.info("Starting Data_Format_1")
-
+def create_dataframe(spark):
+    """
+    Creates a PySpark DataFrame containing dataframe details.
+    """
     # define schema for manually created data frame
-    def_schema = StructType([
+    schema = StructType([
         StructField("ID", IntegerType(), True),
         StructField("EventDate", DateType(), True)]
       )
-    
-    # define the columns
-    columns = ["ID","EventDate"]
-    
+
     # define the data
     data = [(100, "01-01-2020"), (110, "02-02-2020"),(120, "03-03-2020")]
 
-    df = spark.createDataFrame(data=data, schema = columns)
-    # logger.info("Ending Data_Format_1")
-    print("Let's print data type")
-    df.printSchema()
-    df.show()
+    # define the columns
+    columns = ["ID","EventDate"]
+
+    df = spark.createDataFrame(data, columns)
+    return df
+    
+if __name__ == "__main__":
+  print("=== Package: Data_Engineering_1 | Script: Data_Frame_2 ===")
+
+  # Initialize Spark session
+  spark = SparkSession.builder \
+      .appName("Data_Frame_2") \
+      .master("local[3]") \
+      .getOrCreate()
+
+  # Create and display DataFrame
+  df = create_dataframe(spark)
+  print("DataFrame:")
+  # customer_df.show(truncate=False)
+  df.select("*").show(truncate=False)
+  df.printSchema()
+  # Stop Spark session
+  spark.stop()
