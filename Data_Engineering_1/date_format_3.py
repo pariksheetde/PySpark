@@ -46,12 +46,15 @@ if __name__ == "__main__":
         .master("local[3]") \
         .getOrCreate()
 
+    # Suppress unnecessary Spark logging
+    spark.sparkContext.setLogLevel("ERROR")
+
     # Create and display DataFrame
     df = create_dataframe(spark)
     print("DataFrame:")
 
     df.printSchema()
-    df.select("id","Name", "Date", "Month", "Year", "Actual_Birth_Year").show(n = 10, truncate=False)
-        
+    df.select("id","Name", "Date", "Month", "Year", "Actual_Birth_Year").show(df.count(), truncate=False)
+    print("Total Records: ", df.count())
     # Stop Spark session
     spark.stop()
