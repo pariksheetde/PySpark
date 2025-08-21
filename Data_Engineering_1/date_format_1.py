@@ -4,7 +4,6 @@ from pyspark.sql import SparkSession
 from pyspark.sql.types import *
 from pyspark.sql.functions import *
 from pyspark.sql.types import StructType
-# from lib.logger import Log4J
 
 
 if __name__ == "__main__":
