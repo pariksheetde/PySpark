@@ -39,6 +39,9 @@ if __name__ == "__main__":
         .master("local[3]") \
         .getOrCreate()
 
+    # Suppress unnecessary Spark logging
+    spark.sparkContext.setLogLevel("ERROR")
+    
     # Create and display DataFrame
     customer_df = create_customer_dataframe(spark)
     print("Customer DataFrame:")

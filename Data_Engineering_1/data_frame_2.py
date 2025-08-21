@@ -6,6 +6,10 @@ from pyspark.sql.functions import col
 def create_customer_dataframe(spark):
     """
     Creates a PySpark DataFrame containing customer details.
+    Args:
+        spark (SparkSession): The current SparkSession.
+    Returns:
+        DataFrame: Customer DataFrame with pre-defined schema.
     """
     schema = StructType([
         StructField("ID", IntegerType(), True),
@@ -40,6 +44,9 @@ if __name__ == "__main__":
         .appName("Data_Frame_2") \
         .master("local[3]") \
         .getOrCreate()
+
+    # Suppress unnecessary Spark logging
+    spark.sparkContext.setLogLevel("ERROR")
 
     # Create and display DataFrame
     customer_df = create_customer_dataframe(spark)
