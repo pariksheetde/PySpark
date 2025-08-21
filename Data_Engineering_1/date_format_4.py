@@ -73,6 +73,9 @@ if __name__ == "__main__":
         .master("local[3]") \
         .getOrCreate()
 
+    # Suppress unnecessary Spark logging
+    spark.sparkContext.setLogLevel("ERROR")
+
     # Create and display DataFrame
     res_df = create_dataframe(spark)
     print("DataFrame:")
