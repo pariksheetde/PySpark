@@ -24,6 +24,7 @@ def create_customer_dataframe(spark):
         ["Gigi", "Hadid", None, "USA"],
         ["Barbara", "Palvin", 5_414_782, "USA"],
         ["Blake", "Lively", 2_575_000, "USA"],
+        ["Jennifer", "Lopez", 3_58_000, "USA"],
     ]
 
     df = spark.createDataFrame(data, schema)
