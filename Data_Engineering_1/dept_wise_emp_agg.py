@@ -82,7 +82,7 @@ def create_emp_dept_agg_df(emp_df, dept_df):
     return emp_dept_agg_df
 
 if __name__ == "__main__":
-  print("=== Package: Data_Engineering_1 | Script: dept_wise_emp_agg ===")
+  print("=== Package: Data_Engineering_1 | Script: department_wise_employees_average_salary ===")
 
   # Initialize Spark session
   spark = SparkSession.builder \
