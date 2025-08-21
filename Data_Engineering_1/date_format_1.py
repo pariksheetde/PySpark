@@ -26,7 +26,7 @@ def create_dataframe(spark):
     return df
     
 if __name__ == "__main__":
-  print("=== Package: Data_Engineering_1 | Script: Data_Frame_2 ===")
+  print("=== Package: Data_Engineering_1 | Script: Date_Format_1 ===")
 
   # Initialize Spark session
   spark = SparkSession.builder \
