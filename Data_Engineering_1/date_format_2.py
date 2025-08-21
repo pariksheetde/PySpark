@@ -5,9 +5,12 @@ from pyspark.sql.functions import col
 
 def create_dataframe(spark):
     """
-    Creates a PySpark DataFrame containing dataframe details.
+    Creates a PySpark DataFrame containing customer details.
+    Args:
+        spark (SparkSession): The current SparkSession.
+    Returns:
+        DataFrame: Customer DataFrame with pre-defined schema.
     """
-    # define schema for manually created data frame
     schema = StructType([
         StructField("Name", StringType(), True),
         StructField("Date", IntegerType(), True),
