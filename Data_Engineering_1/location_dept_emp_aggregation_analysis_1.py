@@ -105,6 +105,19 @@ def process_locations_departments_employees_df(spark, locations_df, departments_
                 )
     return loc_dept_emp_df
 
+
+def avg_salary_per_department(spark, employees_df):
+    """
+    Calculates the average salary per department from the provided DataFrame.
+    Args:
+        spark (SparkSession): The current SparkSession.
+        loc_dept_emp_df (DataFrame): The DataFrame containing location, department, and employee data.
+    Returns:
+        DataFrame: DataFrame containing the average salary per department.
+    """
+    avg_salary_df = employees_df.groupBy("emp_dept_emp_id").agg(round(avg("salary"), 2).alias("avg_salary")).orderBy("avg_salary", ascending=False)
+    return avg_salary_df
+
 if __name__ == "__main__":
   print("=== Package: Data_Engineering_1 | Script: department_wise_employees_average_salary ===")
 
@@ -126,6 +139,10 @@ if __name__ == "__main__":
   loc_dept_emp_df = process_locations_departments_employees_df(spark, loc_df, dept_df, emp_df)
   loc_dept_emp_df.show(loc_dept_emp_df.count(),truncate=False)
   print(f"Total Records: {loc_dept_emp_df.count()}")
+
+  avg_salary_per_department_df = avg_salary_per_department(spark, emp_df)
+  avg_salary_per_department_df.show(avg_salary_per_department_df.count(), truncate=False)
+  print(f"Total Records: {avg_salary_per_department_df.count()}")
 
   # Stop Spark session
   spark.stop()
