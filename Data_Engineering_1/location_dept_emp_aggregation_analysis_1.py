@@ -96,9 +96,9 @@ def process_locations_departments_employees_df(spark, locations_df, departments_
         .select(employees_df["emp_id"], 
                 employees_df["first_name"], 
                 employees_df["last_name"],
-                locations_df["location_id"],
+                # locations_df["location_id"],
                 departments_df["dept_id"], 
-                departments_df["dept_name"],
+                # departments_df["dept_name"],
                 locations_df["city"], 
                 locations_df["state_province"],
                 employees_df["salary"]
