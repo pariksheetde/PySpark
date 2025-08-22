@@ -86,7 +86,7 @@ def create_dept_avg_salary_grt_df(emp_dept_agg_df, emp_df):
     Args:
         emp_dept_agg_df (DataFrame): DataFrame containing aggregated employee data by department.
     Returns:
-        DataFrame: DataFrame with department ID and average salary.
+        DataFrame: DataFrame with employee details whose salary is greater than average salary within their respective department ID.
     """
     dept_avg_salary_df = emp_dept_agg_df.join(emp_df, emp_dept_agg_df.Dept_ID == emp_df.Dept_ID, "inner") \
         .select('Emp_ID', 'First_Name', 'Last_Name', dept_df['Dept_ID'], 'Salary', 'Avg_Salary') \
