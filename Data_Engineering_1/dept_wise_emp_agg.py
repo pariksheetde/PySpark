@@ -89,11 +89,16 @@ def create_dept_avg_salary_grt_df(emp_dept_agg_df, emp_df):
         DataFrame: DataFrame with department ID and average salary.
     """
     dept_avg_salary_df = emp_dept_agg_df.join(emp_df, emp_dept_agg_df.Dept_ID == emp_df.Dept_ID, "inner") \
-        .select('First_Name', 'Last_Name', dept_df['Dept_ID'], 'Salary', 'Avg_Salary') \
-        .where('Salary > Avg_Salary') \
+        .select('Emp_ID', 'First_Name', 'Last_Name', dept_df['Dept_ID'], 'Salary', 'Avg_Salary') \
+        .where(col('Salary') > col('Avg_Salary')) \
         .orderBy(desc("Avg_Salary"))
+    
+    final_df = dept_avg_salary_df.join(dept_df, dept_avg_salary_df.Dept_ID == dept_df.Dept_ID, "inner") \
+        .select('Emp_ID','First_Name', 'Last_Name', 'Dept_Name', 'Salary', 'Avg_Salary') \
+        .withColumn('Difference', round(col('Salary') - col('Avg_Salary'),2)) \
+        .orderBy(desc("Difference"), asc("Emp_ID")) \
 
-    return dept_avg_salary_df
+    return final_df
 
 if __name__ == "__main__":
   print("=== Package: Data_Engineering_1 | Script: department_wise_employees_average_salary ===")
