@@ -85,7 +85,7 @@ def read_from_employees_csv(spark):
 # This function defines data for employees.
 def process_locations_departments_employees_df(spark, locations_df, departments_df, employees_df):
     """
-    Processes the locations DataFrame.
+    Processes join between locations_df, departments_df, employees_df DataFrame.
     Args:
         loc_df (DataFrame): The DataFrame containing locations data.
     Returns:
