@@ -72,17 +72,36 @@ def create_emp_dept_agg_df(emp_df, dept_df):
         DataFrame: Aggregated DataFrame with employee count and average salary per department.
     """
     emp_dept_agg_df = emp_df.join(dept_df, emp_df.Dept_ID == dept_df.Dept_ID, "inner") \
-        .groupBy("Dept_Name") \
+        .groupBy(dept_df["Dept_ID"]) \
         .agg(
-            count("Emp_ID").alias("Employee_Count"),
-            avg("Salary").alias("Avg_Salary")
+            round(avg("Salary"),2).alias("Avg_Salary")
         ) \
-        .orderBy(desc("Employee_Count"))
+        .orderBy(desc("Avg_Salary"))
 
     return emp_dept_agg_df
 
+def create_dept_avg_salary_grt_df(emp_dept_agg_df, emp_df):
+    """
+    Creates a DataFrame that shows emplyess whose average salary is greater than average salary by department.
+    Args:
+        emp_dept_agg_df (DataFrame): DataFrame containing aggregated employee data by department.
+    Returns:
+        DataFrame: DataFrame with employee details whose salary is greater than average salary within their respective department ID.
+    """
+    dept_avg_salary_df = emp_dept_agg_df.join(emp_df, emp_dept_agg_df.Dept_ID == emp_df.Dept_ID, "inner") \
+        .select('Emp_ID', 'First_Name', 'Last_Name', dept_df['Dept_ID'], 'Salary', 'Avg_Salary') \
+        .where(col('Salary') > col('Avg_Salary')) \
+        .orderBy(desc("Avg_Salary"))
+    
+    final_df = dept_avg_salary_df.join(dept_df, dept_avg_salary_df.Dept_ID == dept_df.Dept_ID, "inner") \
+        .select('Emp_ID','First_Name', 'Last_Name', 'Dept_Name', 'Salary', 'Avg_Salary') \
+        .withColumn('Difference', round(col('Salary') - col('Avg_Salary'),2)) \
+        .orderBy(desc("Difference"), asc("Emp_ID")) \
+
+    return final_df
+
 if __name__ == "__main__":
-  print("=== Package: Data_Engineering_1 | Script: dept_wise_emp_agg ===")
+  print("=== Package: Data_Engineering_1 | Script: department_wise_employees_average_salary ===")
 
   # Initialize Spark session
   spark = SparkSession.builder \
@@ -110,6 +129,11 @@ if __name__ == "__main__":
   emp_dept_agg_df = create_emp_dept_agg_df(emp_df, dept_df)
   emp_dept_agg_df.printSchema()
   emp_dept_agg_df.select("*").show(emp_dept_agg_df.count(), truncate=False)
+
+  print("=== Departments with Average Salary Greater than Department Average ===")
+  dept_avg_salary_df = create_dept_avg_salary_grt_df(emp_dept_agg_df, emp_df)
+  dept_avg_salary_df.printSchema()
+  dept_avg_salary_df.select("*").show(dept_avg_salary_df.count(), truncate=False)
 
   # Stop Spark session
   spark.stop()
