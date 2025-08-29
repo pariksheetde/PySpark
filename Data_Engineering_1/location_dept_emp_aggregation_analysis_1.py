@@ -118,6 +118,28 @@ def avg_salary_per_department(spark, employees_df):
     avg_salary_df = employees_df.groupBy("emp_dept_emp_id").agg(round(avg("salary"), 2).alias("avg_salary")).orderBy("avg_salary", ascending=False)
     return avg_salary_df
 
+def process_employees_salary_greater_than_avg_salary(spark, avg_salary_df, process_locations_departments_employees_df):
+    """
+    Calculates the total number of employees per department from the provided DataFrame.
+    Args:
+        spark (SparkSession): The current SparkSession.
+        loc_dept_emp_df (DataFrame): The DataFrame containing location, department, and employee data.
+    Returns:
+        DataFrame: DataFrame containing the total number of employees per department.
+    """
+    employees_salary_greater_than_avg_salary_df = avg_salary_df.join(process_locations_departments_employees_df, avg_salary_df["emp_dept_emp_id"] == process_locations_departments_employees_df["dept_id"], "inner") \
+        .where(process_locations_departments_employees_df["salary"] > avg_salary_df["avg_salary"]) \
+        .select(process_locations_departments_employees_df["emp_id"], 
+                process_locations_departments_employees_df["first_name"], 
+                process_locations_departments_employees_df["last_name"],
+                process_locations_departments_employees_df["dept_id"], 
+                process_locations_departments_employees_df["city"], 
+                process_locations_departments_employees_df["state_province"],
+                process_locations_departments_employees_df["salary"],
+                avg_salary_df["avg_salary"]
+                ).orderBy("dept_id", ascending=True)    
+    return employees_salary_greater_than_avg_salary_df
+
 if __name__ == "__main__":
   print("=== Package: Data_Engineering_1 | Script: department_wise_employees_average_salary ===")
 
@@ -137,12 +159,17 @@ if __name__ == "__main__":
 
 ### Create an object to perform join operation between `locations_df`, `departments_df`, `employees_df` process by calling loc_dept_emp_df() ### 
   loc_dept_emp_df = process_locations_departments_employees_df(spark, loc_df, dept_df, emp_df)
-  loc_dept_emp_df.show(loc_dept_emp_df.count(),truncate=False)
-  print(f"Total Records: {loc_dept_emp_df.count()}")
+#   loc_dept_emp_df.show(loc_dept_emp_df.count(),truncate=False)
+#   print(f"Total Records: {loc_dept_emp_df.count()}")
 
+###  Compute average salary per department ####
   avg_salary_per_department_df = avg_salary_per_department(spark, emp_df)
-  avg_salary_per_department_df.show(avg_salary_per_department_df.count(), truncate=False)
-  print(f"Total Records: {avg_salary_per_department_df.count()}")
+#   avg_salary_per_department_df.show(avg_salary_per_department_df.count(), truncate=False)
+#   print(f"Total Records: {avg_salary_per_department_df.count()}")
 
-  # Stop Spark session
+###  Compute employees whose salary is greater than average salary per department ####
+  employees_salary_greater_than_avg_salary_df = process_employees_salary_greater_than_avg_salary(spark, avg_salary_per_department_df, loc_dept_emp_df)
+  employees_salary_greater_than_avg_salary_df.show(employees_salary_greater_than_avg_salary_df.count(), truncate=False)
+  print(f"Elite Employees's Count: {employees_salary_greater_than_avg_salary_df.count()}") 
+    # Stop Spark session
   spark.stop()
