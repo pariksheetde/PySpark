@@ -130,10 +130,13 @@ if __name__ == "__main__":
   emp_dept_agg_df.printSchema()
   emp_dept_agg_df.select("*").show(emp_dept_agg_df.count(), truncate=False)
 
-  print("=== Departments with Average Salary Greater than Department Average ===")
+  print("=== Employees whose Salary is greater than average salary within Department ===")
   dept_avg_salary_df = create_dept_avg_salary_grt_df(emp_dept_agg_df, emp_df)
   dept_avg_salary_df.printSchema()
   dept_avg_salary_df.select("*").show(dept_avg_salary_df.count(), truncate=False)
+
+  # Suppress unnecessary Spark logging
+  spark.sparkContext.setLogLevel("ERROR")
 
   # Stop Spark session
   spark.stop()
