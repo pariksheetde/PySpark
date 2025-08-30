@@ -4,6 +4,8 @@ from pyspark.sql import SparkSession
 from pyspark.sql.types import *
 from pyspark.sql.functions import *
 from pyspark.sql.types import StructType
+import sys
+sys.stdout.reconfigure(encoding='utf-8')
 
 def process_fifa_stats_agg():
     fifa_df = spark.read \
