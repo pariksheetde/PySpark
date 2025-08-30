@@ -81,7 +81,11 @@ if __name__ == "__main__":
     print("DataFrame:")
 
     res_df.printSchema()
-    res_df.select("*").show(n = 10, truncate=False)
+    res_df.select("*").show(res_df.count(), truncate=False)
+    print(f"Total Records: {res_df.count()}")
+
+    # Suppress unnecessary Spark logging
+    spark.sparkContext.setLogLevel("ERROR")
         
     # Stop Spark session
     spark.stop()
