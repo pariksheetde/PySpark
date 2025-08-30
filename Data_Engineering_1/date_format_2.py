@@ -51,7 +51,11 @@ if __name__ == "__main__":
     print("DataFrame:")
 
     df.printSchema()
-    df.select("Name", "Date", "Month", "Year").show(n = 10, truncate=False)
+    df.select("Name", "Date", "Month", "Year").show(df.count(), truncate=False)
+    print(f"Total records processed: {df.count()}")
+
+    # Suppress unnecessary Spark logging
+    spark.sparkContext.setLogLevel("ERROR")
         
     # Stop Spark session
     spark.stop()
