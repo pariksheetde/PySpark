@@ -27,11 +27,19 @@ data = [["Samsung", "Galaxy S8", "Android" ,65000, "15-10-2021"],
 
 mobile_df = spark.createDataFrame(data, schema)
 
+# Suppress unnecessary Spark logging
+spark.sparkContext.setLogLevel("ERROR")
+
 clean_mobile_df = mobile_df.withColumn("Date", substring("Launch_DT", 1, 2).cast("Int")) \
     .withColumn("Month", substring("Launch_DT", 4,2).cast("Int")) \
     .withColumn("Year", substring("Launch_DT", 7, 4).cast("Int"))
 
 clean_mobile_df.printSchema()
-clean_mobile_df.show(10, False)
+clean_mobile_df.show(clean_mobile_df.count(), False)
+print(f"Total Records Processed: {clean_mobile_df.count()}")
 
+# Suppress unnecessary Spark logging
+spark.sparkContext.setLogLevel("ERROR")
+
+# stop Spark session
 spark.stop()
