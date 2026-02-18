@@ -41,5 +41,5 @@ print(f"Total Records Processed: {clean_mobile_df.count()}")
 # Suppress unnecessary Spark logging
 spark.sparkContext.setLogLevel("ERROR")
 
-# stop Spark session
+# stop spark session
 spark.stop()
