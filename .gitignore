@@ -50,3 +50,17 @@ Airflow/dags/__pycache__/test.cpython-310.pyc
 Airflow/logs/dag_id=DEEPSI_BASH_DAG/run_id=manual__2026-03-17T060455.799525+0000/task_id=bash_task/attempt=1.log
 Airflow/logs/dag_id=DEEPSI_BASH_DAG/run_id=manual__2026-03-17T060455.799525+0000/task_id=first_python_task/attempt=1.log
 Airflow/logs/dag_id=DEEPSI_BASH_DAG/run_id=manual__2026-03-17T060455.799525+0000/task_id=second_python_task/attempt=1.log
+Airflow/dags/__pycache__/03_XComs_auto.cpython-310.pyc
+Airflow/logs/dag_id=XCOM_DAG_AUTO/run_id=manual__2026-03-17T063307.473762+0000/task_id=bash_task/attempt=1.log
+Airflow/logs/dag_id=XCOM_DAG_AUTO/run_id=manual__2026-03-17T063307.473762+0000/task_id=first_python_task/attempt=1.log
+Airflow/logs/dag_id=XCOM_DAG_AUTO/run_id=manual__2026-03-17T063307.473762+0000/task_id=first_python_task__1/attempt=1.log
+Airflow/logs/dag_id=XCOM_DAG_AUTO/run_id=manual__2026-03-17T063307.473762+0000/task_id=second_python_task/attempt=1.log
+Airflow/logs/dag_id=XCOM_DAG_AUTO/run_id=manual__2026-03-17T064023.153047+0000/task_id=bash_task/attempt=1.log
+Airflow/logs/dag_id=XCOM_DAG_AUTO/run_id=manual__2026-03-17T064023.153047+0000/task_id=first_python_task/attempt=1.log
+Airflow/logs/dag_id=XCOM_DAG_AUTO/run_id=manual__2026-03-17T064023.153047+0000/task_id=first_python_task__1/attempt=1.log
+Airflow/logs/dag_id=XCOM_DAG_AUTO/run_id=manual__2026-03-17T064023.153047+0000/task_id=second_python_task/attempt=1.log
+Airflow/logs/dag_id=XCOM_DAG_AUTO/run_id=manual__2026-03-17T064116.574054+0000/task_id=bash_task/attempt=1.log
+Airflow/logs/dag_id=XCOM_DAG_AUTO/run_id=manual__2026-03-17T064116.574054+0000/task_id=first_python_task/attempt=1.log
+Airflow/logs/dag_id=XCOM_DAG_AUTO/run_id=manual__2026-03-17T064116.574054+0000/task_id=first_python_task__1/attempt=1.log
+Airflow/logs/dag_id=XCOM_DAG_AUTO/run_id=manual__2026-03-17T064116.574054+0000/task_id=second_python_task/attempt=1.log
+Airflow/logs/dag_processor/2026-03-17/dags-folder/03_XComs_auto.py.log
