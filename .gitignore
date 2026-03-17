@@ -47,3 +47,6 @@ Airflow/logs/dag_processor/2026-03-17/dags-folder/01.test.py.log
 Airflow/logs/dag_processor/2026-03-17/dags-folder/02_operator.py.log
 Airflow/logs/dag_processor/2026-03-17/dags-folder/test.py.log
 Airflow/dags/__pycache__/test.cpython-310.pyc
+Airflow/logs/dag_id=DEEPSI_BASH_DAG/run_id=manual__2026-03-17T060455.799525+0000/task_id=bash_task/attempt=1.log
+Airflow/logs/dag_id=DEEPSI_BASH_DAG/run_id=manual__2026-03-17T060455.799525+0000/task_id=first_python_task/attempt=1.log
+Airflow/logs/dag_id=DEEPSI_BASH_DAG/run_id=manual__2026-03-17T060455.799525+0000/task_id=second_python_task/attempt=1.log

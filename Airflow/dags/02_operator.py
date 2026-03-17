@@ -8,18 +8,18 @@ from airflow.operators.bash import BashOperator
 def DEEPSI_BASH_DAG():
     
     @task.python
-    def first_task():
+    def first_python_task():
         print("First Function")
 
     @task.python
-    def second_task():
+    def second_python_task():
         print("Second Function")
     
     @task.bash
     def bash_task():
         return "echo 'www.airflow.com'"
 
-    first_task() >> second_task() >> bash_task()
+    first_python_task() >> second_python_task() >> bash_task()
 
 # INITIALIZE DAG
 DEEPSI_BASH_DAG()
