@@ -8,3 +8,4 @@
 {"timestamp":"2026-03-20T13:20:12.600678","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/01_test.py","logger":"airflow.models.dagbag.DagBag"}
 {"timestamp":"2026-03-20T13:26:38.926351","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/01_test.py","logger":"airflow.models.dagbag.DagBag"}
 {"timestamp":"2026-03-20T13:27:09.493686","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/01_test.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2026-03-20T13:27:39.919857","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/01_test.py","logger":"airflow.models.dagbag.DagBag"}
