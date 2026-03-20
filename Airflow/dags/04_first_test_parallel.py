@@ -1,9 +1,9 @@
 from airflow.sdk import dag, task
 from airflow.decorators import dag, task
 
-@dag(dag_id="first_parallel_dag"
+@dag(dag_id="FIRST_PARALLEL_DAG"
 )
-def first_parallel_dag():
+def FIRST_PARALLEL_DAG():
     
     @task
     def first_task():
@@ -24,4 +24,4 @@ def first_parallel_dag():
     first_task() >> [second_task() >> third_task()] >> final_task()
 
 # INITIALIZE DAG
-first_parallel_dag()
+FIRST_PARALLEL_DAG()

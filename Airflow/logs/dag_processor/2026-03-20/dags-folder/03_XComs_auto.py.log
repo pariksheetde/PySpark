@@ -17,3 +17,8 @@
 {"timestamp":"2026-03-20T13:32:15.087753","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/03_XComs_auto.py","logger":"airflow.models.dagbag.DagBag"}
 {"timestamp":"2026-03-20T13:34:17.518396","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/03_XComs_auto.py","logger":"airflow.models.dagbag.DagBag"}
 {"timestamp":"2026-03-20T13:34:48.175690","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/03_XComs_auto.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2026-03-20T13:35:49.214076","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/03_XComs_auto.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2026-03-20T13:37:25.860437","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/03_XComs_auto.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2026-03-20T13:39:33.439465","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/03_XComs_auto.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2026-03-20T13:40:04.017213","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/03_XComs_auto.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2026-03-20T13:40:39.681053","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/03_XComs_auto.py","logger":"airflow.models.dagbag.DagBag"}

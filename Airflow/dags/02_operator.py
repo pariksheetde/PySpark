@@ -2,10 +2,10 @@ from airflow.sdk import dag, task
 from airflow.decorators import dag, task
 from airflow.operators.bash import BashOperator
 
-@dag(dag_id="DEEPSI_BASH_DAG",
+@dag(dag_id="OPERATOR_DAG",
         schedule=None,
 )
-def DEEPSI_BASH_DAG():
+def OPERATOR_DAG():
     
     @task.python
     def first_python_task():
@@ -22,4 +22,4 @@ def DEEPSI_BASH_DAG():
     first_python_task() >> second_python_task() >> bash_task()
 
 # INITIALIZE DAG
-DEEPSI_BASH_DAG()
+OPERATOR_DAG()
