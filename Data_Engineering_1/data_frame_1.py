@@ -46,7 +46,11 @@ if __name__ == "__main__":
     customer_df = create_customer_dataframe(spark)
     print("Customer DataFrame:")
     # customer_df.show(truncate=False)
-    customer_df.select("F_Name", "L_Name", "Salary", "Nationality").orderBy(col("Salary").desc()).show(truncate=False)
+    transformed_customer_df = customer_df.select("F_Name", "L_Name", "Salary", "Nationality").where("Salary IS NULL").orderBy(col("Salary").desc())
 
+    transformed_customer_df.show(truncate=False)
+    print(f"Number of records processed: {transformed_customer_df.count()}")
+    
+    print("=== End of Script ===")
     # Stop Spark session
     spark.stop()

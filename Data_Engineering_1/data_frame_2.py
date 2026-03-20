@@ -54,5 +54,8 @@ if __name__ == "__main__":
     # customer_df.show(truncate=False)
     customer_df.select("*").orderBy(col("ID").asc()).show(truncate=False)
 
+    # Suppress unnecessary Spark logging
+    spark.sparkContext.setLogLevel("ERROR")
+
     # Stop Spark session
     spark.stop()

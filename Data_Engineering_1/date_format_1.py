@@ -42,6 +42,10 @@ if __name__ == "__main__":
   print("DataFrame:")
   
   df.select("*").show(truncate=False)
-  df.printSchema()
+  print(f"Number of records processed: {df.count()}")
+
+  # Suppress unnecessary Spark logging
+  spark.sparkContext.setLogLevel("ERROR")
+
   # Stop Spark session
   spark.stop()

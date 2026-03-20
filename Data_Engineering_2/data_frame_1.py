@@ -29,10 +29,17 @@ if __name__ == "__main__":
         .master("local[3]") \
         .getOrCreate()
 
+    # Suppress unnecessary Spark logging
     spark.sparkContext.setLogLevel("ERROR")
 
     filtered_cust_df = process_customers_df(spark)
-    filtered_cust_df.filter(col("Salary") > 2000000).orderBy(col("Salary").desc()).show(truncate=False)
+    filtered_cust_df.filter(col("Salary") > 2000000).orderBy(col("Salary").desc())
     
+    filtered_cust_df.show(filtered_cust_df.count(), truncate=False)
+    print(f"Total Records Processed: {filtered_cust_df.count()}")
+
+    # Suppress unnecessary Spark logging
+    spark.sparkContext.setLogLevel("ERROR")
+
     # Stop Spark session
     spark.stop()

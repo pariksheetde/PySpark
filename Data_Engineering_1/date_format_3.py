@@ -58,6 +58,11 @@ if __name__ == "__main__":
 
     df.printSchema()
     df.select("id","Name", "Date", "Month", "Year", "Actual_Birth_Year").show(df.count(), truncate=False)
+
     print("Total Records: ", df.count())
+
+    # Suppress unnecessary Spark logging
+    spark.sparkContext.setLogLevel("ERROR")
+
     # Stop Spark session
     spark.stop()

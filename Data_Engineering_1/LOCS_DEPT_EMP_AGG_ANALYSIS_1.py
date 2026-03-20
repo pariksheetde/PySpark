@@ -170,6 +170,10 @@ if __name__ == "__main__":
 ###  Compute employees whose salary is greater than average salary per department ####
   employees_salary_greater_than_avg_salary_df = process_employees_salary_greater_than_avg_salary(spark, avg_salary_per_department_df, loc_dept_emp_df)
   employees_salary_greater_than_avg_salary_df.show(employees_salary_greater_than_avg_salary_df.count(), truncate=False)
-  print(f"Elite Employees's Count: {employees_salary_greater_than_avg_salary_df.count()}") 
+  print(f"Elite Employees's Count: {employees_salary_greater_than_avg_salary_df.count()}")
+    
+  # Suppress unnecessary Spark logging
+  spark.sparkContext.setLogLevel("ERROR")
+
     # Stop Spark session
   spark.stop()
