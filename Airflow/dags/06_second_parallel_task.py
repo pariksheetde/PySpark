@@ -19,26 +19,33 @@ def PARALLEL_TASKS_DAG():
     @task
     def transform_framework(**kwargs):
         ti = kwargs['ti']
-        framwork_extracted = ti.xcom_pull(task_ids ='extract_framework')['framework']
+        framwork_extracted = ti.xcom_pull(task_ids ='extract_task')['framework']
         print(f"Transforming {framwork_extracted} data")
-        ti.xcom_push(key='return_value', value=extracted_data_dict)
+        transform_framework = [framework.upper() for framework in framwork_extracted]
+        print(f"Transformed framework data: {transform_framework}")
+        ti.xcom_push(key='return_value', value=transform_framework)
 
-    @task
-    def transform_database(**kwargs):
-        ti = kwargs['ti']
-        database_extracted = ti.xcom_pull(task_ids ='extract_database')['database']
-        print(f"Transforming {database_extracted} data")
-        ti.xcom_push(key='return_value', value=extracted_data_dict)
+    # @task
+    # def transform_database(**kwargs):
+    #     ti = kwargs['ti']
+    #     database_extracted = ti.xcom_pull(task_ids ='extract_task')['database']
+    #     print(f"Transforming {database_extracted} data")
+    #     transform_database = [database.upper() for database in database_extracted]
+    #     print(f"Transformed database data: {transform_database}")
+    #     ti.xcom_push(key='return_value', value=transform_database)
 
-    @task
-    def transform_programming_language(**kwargs):
-        ti = kwargs['ti']
-        programming_language_extracted = ti.xcom_pull(task_ids ='extract_programming_language')['programming_language']
-        print(f"Transforming {programming_language_extracted} data")
-        ti.xcom_push(key='return_value', value=extracted_data_dict)  
+    # @task
+    # def transform_programming_language(**kwargs):
+    #     ti = kwargs['ti']
+    #     programming_language_extracted = ti.xcom_pull(task_ids ='extract_task')['programming_language']
+    #     print(f"Transforming {programming_language_extracted} data")
+    #     transform_programming_language = [language.upper() for language in programming_language_extracted]
+    #     print(f"Transformed programming language data: {transform_programming_language}")
+    #     ti.xcom_push(key='return_value', value=transform_programming_language)
 
 
-    extract_task() >> [transform_framework(), transform_database(), transform_programming_language()]
+    # extract_task() >> [transform_framework(), transform_database(), transform_programming_language()]
+    extract_task() >> transform_framework()
 
 # INITIALIZE DAG
 PARALLEL_TASKS_DAG()
