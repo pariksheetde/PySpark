@@ -52,8 +52,15 @@ def PARALLEL_TASKS_DAG():
         return f"echo 'Loading data to destination' {transformed_framework} {transformed_database} {transformed_programming_language}"
 
 
+    extract_task = extract_task()
+    transform_framework = transform_framework()
+    transform_database = transform_database()
+    transform_programming_language = transform_programming_language()
+    load_task = load_task()
+
+
     # extract_task() >> [transform_framework(), transform_database(), transform_programming_language()]
-    extract_task() >> transform_framework() >> transform_database() >> transform_programming_language() >> load_task()
+    extract_task >> [transform_framework, transform_database, transform_programming_language] >> load_task
 
 # INITIALIZE DAG
 PARALLEL_TASKS_DAG()
