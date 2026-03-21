@@ -10,10 +10,10 @@ def PARALLEL_TASKS_DAG():
     def extract_task(**kwargs):
         print("Extracting data")
         ti = kwargs['ti']
-        extracted_data_dict = {"Framework" : ["Spark", 'Flink', 'Ray'],
-                         "Database" : ['Snowflake', 'BigQuery', 'Redshift'],
-                         "Programming Language" : ['SQL', 'Python', 'Java']}
-        ti.xcom_push(key='extracted_data', value=extracted_data_dict)
+        extracted_data_dict = {"framework" : ["SPARK", 'FLINK', 'RAY'],
+                         "database" : ['SNOWFLAKE', 'BIGQUERY', 'REDSHIFT'],
+                         "programming Language" : ['SQL', 'PYTHON', 'JAVA', 'SCALA']}
+        ti.xcom_push(key='return_value', value=extracted_data_dict)
 
 
     @task
@@ -21,9 +21,9 @@ def PARALLEL_TASKS_DAG():
         ti = kwargs['ti']
         framwork_extracted = ti.xcom_pull(task_ids ='extract_task')['framework']
         print(f"Transforming {framwork_extracted} data")
-        transform_framework = [framework.upper() for framework in framwork_extracted]
+        transform_framework = [framework.capitalize() for framework in framwork_extracted]
         print(f"Transformed framework data: {transform_framework}")
-        ti.xcom_push(key='return_value', value=transform_framework)
+        # ti.xcom_push(key='return_value', value=transform_framework)
 
     # @task
     # def transform_database(**kwargs):
